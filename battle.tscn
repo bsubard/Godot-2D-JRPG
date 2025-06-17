@@ -1,0 +1,347 @@
+[gd_scene load_steps=25 format=3 uid="uid://b5i766qpvnxrt"]
+
+[ext_resource type="Texture2D" uid="uid://dch7su60ena5q" path="res://icon.svg" id="1_ip7xm"]
+[ext_resource type="Script" uid="uid://ch35dcqkfkmb1" path="res://battle.gd" id="1_oxp8w"]
+
+[sub_resource type="Gradient" id="Gradient_oxp8w"]
+colors = PackedColorArray(0.248834, 0.491631, 0.663322, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7sfm4"]
+frequency = 0.002
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_i431l"]
+width = 1200
+color_ramp = SubResource("Gradient_oxp8w")
+noise = SubResource("FastNoiseLite_7sfm4")
+
+[sub_resource type="Gradient" id="Gradient_6t8i5"]
+colors = PackedColorArray(0, 0.471069, 0.275833, 1, 6.19683e-07, 0.309509, 0.101604, 1)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0npn6"]
+width = 1200
+height = 256
+color_ramp = SubResource("Gradient_6t8i5")
+noise = SubResource("FastNoiseLite_7sfm4")
+
+[sub_resource type="Gradient" id="Gradient_ip7xm"]
+colors = PackedColorArray(0.656166, 0, 0.258523, 1, 0.770172, 0.0349343, 0.317648, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_oxp8w"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7sfm4"]
+width = 256
+height = 32
+color_ramp = SubResource("Gradient_ip7xm")
+noise = SubResource("FastNoiseLite_oxp8w")
+
+[sub_resource type="Gradient" id="Gradient_i431l"]
+colors = PackedColorArray(0, 0.420345, 0.270405, 1, 2.40654e-07, 0.53263, 0.334762, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6t8i5"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dw4jg"]
+width = 256
+height = 32
+color_ramp = SubResource("Gradient_i431l")
+noise = SubResource("FastNoiseLite_6t8i5")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ip7xm"]
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_7sfm4"]
+colors = PackedColorArray(0.31976, 0.362151, 0.35844, 1, 0.406172, 0.424447, 0.423697, 1)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6t8i5"]
+width = 256
+height = 32
+color_ramp = SubResource("Gradient_7sfm4")
+noise = SubResource("FastNoiseLite_oxp8w")
+
+[sub_resource type="Gradient" id="Gradient_dw4jg"]
+colors = PackedColorArray(0.149547, 0.0666786, 1, 1, 0, 0.431387, 0.865588, 1)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mhv3b"]
+width = 256
+height = 32
+color_ramp = SubResource("Gradient_dw4jg")
+noise = SubResource("FastNoiseLite_6t8i5")
+
+[sub_resource type="Gradient" id="Gradient_lcjiy"]
+colors = PackedColorArray(0.31976, 0.362151, 0.35844, 1, 0.406172, 0.424447, 0.423697, 1)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ol6im"]
+width = 256
+height = 32
+color_ramp = SubResource("Gradient_lcjiy")
+noise = SubResource("FastNoiseLite_oxp8w")
+
+[sub_resource type="Gradient" id="Gradient_b1i6x"]
+colors = PackedColorArray(0.149547, 0.0666786, 1, 1, 0, 0.431387, 0.865588, 1)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_sl0w2"]
+width = 256
+height = 32
+color_ramp = SubResource("Gradient_b1i6x")
+noise = SubResource("FastNoiseLite_6t8i5")
+
+[sub_resource type="LabelSettings" id="LabelSettings_elvfr"]
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4s0ev"]
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
+
+[node name="battle" type="Node2D"]
+script = ExtResource("1_oxp8w")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="sky" type="Sprite2D" parent="."]
+position = Vector2(0, -100)
+texture = SubResource("NoiseTexture2D_i431l")
+
+[node name="ground" type="Sprite2D" parent="."]
+position = Vector2(0, 193)
+texture = SubResource("NoiseTexture2D_0npn6")
+
+[node name="hero" type="Sprite2D" parent="."]
+position = Vector2(-419, 0)
+texture = ExtResource("1_ip7xm")
+
+[node name="enemy" type="Sprite2D" parent="."]
+modulate = Color(0.812383, 3.36915e-05, 0.582544, 1)
+position = Vector2(374, 0)
+texture = ExtResource("1_ip7xm")
+
+[node name="hero_hp_bar" type="TextureProgressBar" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -535.0
+offset_top = -318.0
+offset_right = -279.0
+offset_bottom = -278.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 55.0
+texture_under = SubResource("NoiseTexture2D_7sfm4")
+texture_progress = SubResource("NoiseTexture2D_dw4jg")
+
+[node name="enemy_hp_bar" type="TextureProgressBar" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 261.0
+offset_top = -318.0
+offset_right = 517.0
+offset_bottom = -278.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 55.0
+texture_under = SubResource("NoiseTexture2D_7sfm4")
+texture_progress = SubResource("NoiseTexture2D_dw4jg")
+
+[node name="hero_hp_label" type="Label" parent="."]
+offset_left = -528.0
+offset_top = -283.0
+offset_right = -436.0
+offset_bottom = -260.0
+text = "HP: 100/100"
+label_settings = SubResource("LabelSettings_ip7xm")
+
+[node name="enemy_hp_label" type="Label" parent="."]
+offset_left = 267.0
+offset_top = -283.0
+offset_right = 359.0
+offset_bottom = -260.0
+text = "HP: 100/100"
+label_settings = SubResource("LabelSettings_ip7xm")
+
+[node name="hero_mp_bar" type="TextureProgressBar" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -535.0
+offset_top = -254.0
+offset_right = -279.0
+offset_bottom = -214.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 55.0
+texture_under = SubResource("NoiseTexture2D_6t8i5")
+texture_progress = SubResource("NoiseTexture2D_mhv3b")
+
+[node name="enemy_mp_bar" type="TextureProgressBar" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 261.0
+offset_top = -254.0
+offset_right = 517.0
+offset_bottom = -214.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 55.0
+texture_under = SubResource("NoiseTexture2D_ol6im")
+texture_progress = SubResource("NoiseTexture2D_sl0w2")
+
+[node name="hero_mp_label" type="Label" parent="."]
+offset_left = -528.0
+offset_top = -212.0
+offset_right = -433.0
+offset_bottom = -189.0
+text = "MP: 100/100"
+label_settings = SubResource("LabelSettings_elvfr")
+
+[node name="enemy_mp_label" type="Label" parent="."]
+offset_left = 267.0
+offset_top = -212.0
+offset_right = 362.0
+offset_bottom = -189.0
+text = "MP: 100/100"
+label_settings = SubResource("LabelSettings_4s0ev")
+
+[node name="HBoxContainer_menu" type="HBoxContainer" parent="."]
+offset_left = -486.0
+offset_top = 114.0
+offset_right = -366.0
+offset_bottom = 180.0
+scale = Vector2(2, 2)
+
+[node name="VBoxContainer_attack_magic" type="VBoxContainer" parent="HBoxContainer_menu"]
+layout_mode = 2
+
+[node name="attack_button" type="Button" parent="HBoxContainer_menu/VBoxContainer_attack_magic"]
+layout_mode = 2
+text = "Attack"
+
+[node name="magic_button" type="Button" parent="HBoxContainer_menu/VBoxContainer_attack_magic"]
+layout_mode = 2
+text = "Magic"
+
+[node name="VBoxContainer_item_run" type="VBoxContainer" parent="HBoxContainer_menu"]
+layout_mode = 2
+
+[node name="item_button" type="Button" parent="HBoxContainer_menu/VBoxContainer_item_run"]
+layout_mode = 2
+text = "Item"
+
+[node name="run_button" type="Button" parent="HBoxContainer_menu/VBoxContainer_item_run"]
+layout_mode = 2
+text = "Run"
+
+[node name="HBoxContainer_item" type="HBoxContainer" parent="."]
+offset_left = 612.0
+offset_top = 114.0
+offset_right = 800.0
+offset_bottom = 180.0
+scale = Vector2(2, 2)
+
+[node name="VBoxContainer_item1" type="VBoxContainer" parent="HBoxContainer_item"]
+layout_mode = 2
+
+[node name="item1" type="Button" parent="HBoxContainer_item/VBoxContainer_item1"]
+layout_mode = 2
+text = "Item
+"
+
+[node name="item2" type="Button" parent="HBoxContainer_item/VBoxContainer_item1"]
+layout_mode = 2
+text = "Item
+"
+
+[node name="VBoxContainer_item2" type="VBoxContainer" parent="HBoxContainer_item"]
+layout_mode = 2
+
+[node name="item3" type="Button" parent="HBoxContainer_item/VBoxContainer_item2"]
+layout_mode = 2
+text = "Item"
+
+[node name="item4" type="Button" parent="HBoxContainer_item/VBoxContainer_item2"]
+layout_mode = 2
+text = "Run"
+
+[node name="VBoxContainer_item3" type="VBoxContainer" parent="HBoxContainer_item"]
+layout_mode = 2
+
+[node name="item5" type="Button" parent="HBoxContainer_item/VBoxContainer_item3"]
+layout_mode = 2
+text = "Item"
+
+[node name="item6" type="Button" parent="HBoxContainer_item/VBoxContainer_item3"]
+layout_mode = 2
+text = "Run"
+
+[node name="VBoxContainer_item4" type="VBoxContainer" parent="HBoxContainer_item"]
+layout_mode = 2
+
+[node name="item7" type="Button" parent="HBoxContainer_item/VBoxContainer_item4"]
+layout_mode = 2
+text = "Item"
+
+[node name="item8" type="Button" parent="HBoxContainer_item/VBoxContainer_item4"]
+layout_mode = 2
+text = "Run"
+
+[node name="HBoxContainer_magic" type="HBoxContainer" parent="."]
+offset_left = 1212.0
+offset_top = 114.0
+offset_right = 1400.0
+offset_bottom = 180.0
+scale = Vector2(2, 2)
+
+[node name="VBoxContainer_magic1" type="VBoxContainer" parent="HBoxContainer_magic"]
+layout_mode = 2
+
+[node name="magic1" type="Button" parent="HBoxContainer_magic/VBoxContainer_magic1"]
+layout_mode = 2
+text = "Item
+"
+
+[node name="magic2" type="Button" parent="HBoxContainer_magic/VBoxContainer_magic1"]
+layout_mode = 2
+text = "Item
+"
+
+[node name="VBoxContainer_magic2" type="VBoxContainer" parent="HBoxContainer_magic"]
+layout_mode = 2
+
+[node name="magic3" type="Button" parent="HBoxContainer_magic/VBoxContainer_magic2"]
+layout_mode = 2
+text = "Item"
+
+[node name="magic4" type="Button" parent="HBoxContainer_magic/VBoxContainer_magic2"]
+layout_mode = 2
+text = "Run"
+
+[node name="VBoxContainer_magic3" type="VBoxContainer" parent="HBoxContainer_magic"]
+layout_mode = 2
+
+[node name="magic5" type="Button" parent="HBoxContainer_magic/VBoxContainer_magic3"]
+layout_mode = 2
+text = "Item"
+
+[node name="magic6" type="Button" parent="HBoxContainer_magic/VBoxContainer_magic3"]
+layout_mode = 2
+text = "Run"
+
+[node name="VBoxContainer_magic4" type="VBoxContainer" parent="HBoxContainer_magic"]
+layout_mode = 2
+
+[node name="magic7" type="Button" parent="HBoxContainer_magic/VBoxContainer_magic4"]
+layout_mode = 2
+text = "Item"
+
+[node name="magic8" type="Button" parent="HBoxContainer_magic/VBoxContainer_magic4"]
+layout_mode = 2
+text = "Run"

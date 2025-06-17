@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1cf7vinmw5cj"]
+
+[ext_resource type="Script" uid="uid://c3smiat6v3i1q" path="res://monster.gd" id="1_mrqeg"]
+[ext_resource type="Texture2D" uid="uid://dch7su60ena5q" path="res://icon.svg" id="1_s3gyj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mrqeg"]
+size = Vector2(15, 15)
+
+[node name="monster" type="Area2D"]
+script = ExtResource("1_mrqeg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mrqeg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.895804, 1.44392e-06, 0.474955, 1)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("1_s3gyj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

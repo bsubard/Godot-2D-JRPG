@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtk12ie38gvv6"]
+
+[ext_resource type="Texture2D" uid="uid://dch7su60ena5q" path="res://icon.svg" id="1_o0ird"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_do30u"]
+size = Vector2(17, 17)
+
+[node name="weapon_shopper" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_do30u")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("1_o0ird")
